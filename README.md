@@ -258,7 +258,7 @@ NO OPEN SOURCE
 
 Need help? Found a bug? Have a suggestion?
 - 🐛 [Issue Tracker](../../issues)
-- 💬 [Discord Server](https://discord.com/invite/4crMdptpP6)
+- 💬 [Discord Server](https://discord.gg/Jxv58TyV7A)
 
 ---
 
