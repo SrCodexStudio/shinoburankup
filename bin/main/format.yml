@@ -1,0 +1,52 @@
+#  ____  _     _             _           ____             _
+# / ___|| |__ (_)_ __   ___ | |__  _   _|  _ \ __ _ _ __ | | ___   _ _ __
+# \___ \| '_ \| | '_ \ / _ \| '_ \| | | | |_) / _` | '_ \| |/ / | | | '_ \
+#  ___) | | | | | | | | (_) | |_) | |_| |  _ < (_| | | | |   <| |_| | |_) |
+# |____/|_| |_|_|_| |_|\___/|_.__/ \__,_|_| \_\__,_|_| |_|_|\_\\__,_| .__/
+#                                                                   |_|
+# Format Configuration v1.0.0
+#
+# This file contains FORMAT settings only (numbers, currency, progress bars, time).
+# For messages and text translations, see: lang/en.yml or lang/es.yml
+#
+# ============================================
+#           PROGRESS BAR SETTINGS
+# ============================================
+progress-bar:
+  # Characters for the progress bar
+  filled-char: "|"
+  empty-char: "|"
+  length: 20
+
+  # Colors (legacy format)
+  filled-color: "&a"
+  empty-color: "&8"
+
+# ============================================
+#           TIME FORMAT SETTINGS
+# ============================================
+time:
+  # Formats for cooldown/duration display
+  hours: "{amount}h"
+  minutes: "{amount}m"
+  seconds: "{amount}s"
+
+# ============================================
+#         NUMBER FORMAT SETTINGS
+# ============================================
+numbers:
+  # Currency symbol
+  currency-symbol: "$"
+
+  # Use short format for large numbers (1K, 1M, 1B)
+  use-short-format: true
+
+  # Decimal places for short format
+  short-decimals: 2
+
+  # Short format suffixes
+  short-suffixes:
+    thousand: "K"
+    million: "M"
+    billion: "B"
+    trillion: "T"

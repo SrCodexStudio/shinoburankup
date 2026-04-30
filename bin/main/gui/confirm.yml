@@ -1,0 +1,160 @@
+# ============================================================================
+#  ____  _     _             _           ____             _
+# / ___|| |__ (_)_ __   ___ | |__  _   _|  _ \ __ _ _ __ | | ___   _ _ __
+# \___ \| '_ \| | '_ \ / _ \| '_ \| | | | |_) / _` | '_ \| |/ / | | | '_ \
+#  ___) | | | | | | | | (_) | |_) | |_| |  _ < (_| | | | |   <| |_| | |_) |
+# |____/|_| |_|_|_| |_|\___/|_.__/ \__,_|_| \_\__,_|_| |_|_|\_\\__,_| .__/
+#                                                                   |_|
+# GUI Configuration - Rankup Confirmation
+# ============================================================================
+#
+# This file controls the appearance and layout of the rankup confirmation GUI
+#
+# ============================================================================
+
+# GUI Settings
+settings:
+  # Number of rows (1-6)
+  rows: 5
+
+  # Play sounds?
+  sounds:
+    enabled: true
+    open: "BLOCK_CHEST_OPEN"
+    close: "BLOCK_CHEST_CLOSE"
+    confirm: "ENTITY_PLAYER_LEVELUP"
+    cancel: "BLOCK_NOTE_BLOCK_BASS"
+    cannot-afford: "ENTITY_VILLAGER_NO"
+
+# Background/Filler items
+filler:
+  # Main background
+  background:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  # Decorative separators
+  separator:
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+
+# Current rank display
+current-rank:
+  enabled: true
+  slot: 11  # Left side, row 2
+  material: "BOOK"
+  # Use rank's custom icon if defined? (true = use rank icon, false = use material above)
+  use-rank-icon: true
+  glow: false
+  custom-model-data: 0
+
+# Arrow indicator between ranks
+arrow:
+  enabled: true
+  slot: 13  # Center, row 2
+  material: "ARROW"
+  glow: true
+  custom-model-data: 0
+
+# Next rank display
+next-rank:
+  enabled: true
+  slot: 15  # Right side, row 2
+  material: "ENCHANTED_BOOK"
+  use-rank-icon: true
+  glow: true
+  custom-model-data: 0
+
+# Cost information display
+cost-info:
+  enabled: true
+  slot: 22  # Center, row 3
+  # Different materials based on affordability
+  can-afford:
+    material: "GOLD_INGOT"
+    glow: true
+  cannot-afford:
+    material: "IRON_INGOT"
+    glow: false
+  custom-model-data: 0
+
+# Rewards preview
+rewards-preview:
+  enabled: true
+  slot: 31  # Center, row 4
+  material: "CHEST"
+  glow: true
+  custom-model-data: 0
+
+# Confirm button
+confirm-button:
+  enabled: true
+  slot: 29  # Left of center, row 4
+  # When player can afford
+  can-afford:
+    material: "LIME_CONCRETE"
+    glow: true
+  # When player cannot afford (shows as disabled)
+  cannot-afford:
+    material: "GRAY_CONCRETE"
+    glow: false
+  custom-model-data: 0
+
+# Cancel button
+cancel-button:
+  enabled: true
+  slot: 33  # Right of center, row 4
+  material: "RED_CONCRETE"
+  glow: false
+  custom-model-data: 0
+
+# Decoration configuration
+decorations:
+  # Top row
+  top-row:
+    enabled: true
+    slots: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+
+  # Bottom row
+  bottom-row:
+    enabled: true
+    slots: [36, 37, 38, 39, 40, 41, 42, 43, 44]
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+
+  # Side columns
+  left-column:
+    enabled: true
+    slots: [9, 18, 27]
+    material: "BLUE_STAINED_GLASS_PANE"
+    name: " "
+
+  right-column:
+    enabled: true
+    slots: [17, 26, 35]
+    material: "BLUE_STAINED_GLASS_PANE"
+    name: " "
+
+  # Middle separators (between items)
+  separators:
+    enabled: true
+    slots: [10, 12, 14, 16, 19, 20, 21, 23, 24, 25, 28, 30, 32, 34]
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+# Error display (when rank not found)
+error-display:
+  slot: 22
+  material: "BARRIER"
+  fill-material: "RED_STAINED_GLASS_PANE"
+  fill-name: " "
+
+# Animation settings (Premium only)
+animations:
+  enabled: false
+  # Pulsing glow on confirm button
+  pulse-confirm: false
+  # Particle effects
+  particles: false

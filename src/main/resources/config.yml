@@ -1,0 +1,435 @@
+#  ____  _     _             _           ____             _
+# / ___|| |__ (_)_ __   ___ | |__  _   _|  _ \ __ _ _ __ | | ___   _ _ __
+# \___ \| '_ \| | '_ \ / _ \| '_ \| | | | |_) / _` | '_ \| |/ / | | | '_ \
+#  ___) | | | | | | | | (_) | |_) | |_| |  _ < (_| | | | |   <| |_| | |_) |
+# |____/|_| |_|_|_| |_|\___/|_.__/ \__,_|_| \_\__,_|_| |_|_|\_\\__,_| .__/
+#                                                                   |_|
+# Configuration File v3.0.0
+# The Hero's Journey Awaits...
+
+# ============================================
+#              DATABASE SETTINGS
+# ============================================
+database:
+  # Database type: 'sqlite' or 'mysql'
+  type: sqlite
+
+  # SQLite settings (used if type is 'sqlite')
+  sqlite:
+    file: "data/shinobu_rankup.db"
+
+  # MySQL/MariaDB settings (used if type is 'mysql')
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "shinobu_rankup"
+    username: "root"
+    password: ""
+    # Connection pool settings
+    pool:
+      size: 10
+      min-idle: 2
+      max-lifetime: 1800000  # 30 minutes
+      connection-timeout: 10000  # 10 seconds
+      idle-timeout: 600000  # 10 minutes
+    # Additional properties
+    properties:
+      cachePrepStmts: true
+      prepStmtCacheSize: 250
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
+      useLocalSessionState: true
+      rewriteBatchedStatements: true
+      cacheResultSetMetadata: true
+      cacheServerConfiguration: true
+      elideSetAutoCommits: true
+      maintainTimeStats: false
+
+  # ============================================
+  #              REDIS CACHE (OPTIONAL)
+  # ============================================
+  # Redis provides a distributed cache layer for player data.
+  #
+  # ┌─────────────────────────────────────────────────────────────────┐
+  # │  WHEN SHOULD YOU ENABLE REDIS?                                 │
+  # │                                                                 │
+  # │  ✅ ENABLE Redis if:                                           │
+  # │     • You have 500+ concurrent players                         │
+  # │     • You have MULTIPLE servers connected (BungeeCord/         │
+  # │       Velocity) that need to share player data                 │
+  # │     • You need cache persistence between restarts              │
+  # │     • Your server has high database query load                 │
+  # │                                                                 │
+  # │  ❌ DO NOT ENABLE Redis if:                                    │
+  # │     • You have a single small server (<100 players)            │
+  # │     • You don't have a Redis instance available                │
+  # │     • Your server runs fine with in-memory cache               │
+  # │     • You have no experience managing Redis                    │
+  # │                                                                 │
+  # │  💡 RECOMMENDATION:                                            │
+  # │     The in-memory cache (default) is sufficient for 90% of     │
+  # │     servers. Only enable Redis if you have specific            │
+  # │     scalability or multi-server synchronization needs.         │
+  # └─────────────────────────────────────────────────────────────────┘
+  #
+  redis:
+    # Enable Redis distributed cache (default: false)
+    enabled: false
+
+    # Redis server connection
+    host: "localhost"
+    port: 6379
+    password: ""  # Leave empty if no password
+
+    # Database index (0-15, default: 0)
+    database: 0
+
+    # Connection timeout in milliseconds
+    timeout: 3000
+
+    # SSL/TLS connection (for cloud Redis services)
+    ssl: false
+
+    # Key prefix (useful for multiple plugins sharing same Redis)
+    key-prefix: "shinobu:rankup:"
+
+    # Cache TTL in seconds (how long data stays in Redis)
+    # Default: 600 (10 minutes)
+    ttl: 600
+
+    # Connection pool settings
+    pool:
+      max-total: 16       # Maximum connections in pool
+      max-idle: 8         # Maximum idle connections
+      min-idle: 2         # Minimum idle connections
+      max-wait: 3000      # Max wait time for connection (ms)
+
+# ============================================
+#             LANGUAGE SETTINGS
+# ============================================
+# Available languages: en (English), es (Spanish)
+# Language files are located in plugins/ShinobuRankup/lang/
+# This affects command messages and GUI text only
+# Note: messages.yml and ranks.yml are NOT affected by this setting
+language: en
+
+# ============================================
+#             GENERAL SETTINGS
+# ============================================
+settings:
+  # Prefix for all plugin messages
+  # Supports MiniMessage format and legacy color codes
+  prefix: "<dark_gray>[<gradient:#FFD700:#FFA500><bold>Shinobu</bold></gradient><gradient:#FFA500:#FFFF00>Rankup</gradient><dark_gray>] "
+
+  # Legacy prefix (for older versions)
+  legacy-prefix: "&8[&6&lShinobu&eRankup&8] "
+
+  # Enable debug mode (verbose logging)
+  debug: false
+
+  # Auto-save interval in minutes (0 to disable)
+  auto-save-interval: 5
+
+  # Check for updates on startup
+  check-updates: true
+
+# ============================================
+#             RANKUP SETTINGS
+# ============================================
+rankup:
+  # Allow /rankupmax command (rank up as many times as possible)
+  rankupmax-enabled: true
+
+  # Maximum ranks to process in one /rankupmax command (prevent lag)
+  rankupmax-limit: 10
+
+  # Cooldown between rankups in seconds (0 to disable)
+  cooldown: 0
+
+  # Require confirmation before ranking up
+  require-confirmation: false
+  confirmation-timeout: 30  # seconds
+
+  # Economy settings
+  economy:
+    # Vault economy provider
+    provider: "vault"
+    # Refund percentage if rankup is cancelled (0-100)
+    refund-percentage: 100
+
+# ============================================
+#           BROADCAST SETTINGS
+# ============================================
+broadcast:
+  # Broadcast when a player ranks up
+  enabled: false
+
+  # Only broadcast for ranks at or above this tier
+  # Tier thresholds: 1-10 (Tier 1), 11-20 (Tier 2), etc.
+  minimum-tier: 1
+
+  # Broadcast format (supports PlaceholderAPI)
+  # Available placeholders: {player}, {rank}, {rank_display}, {old_rank}, {tier}
+  format: "<dark_gray>[<gold>★</gold>]</dark_gray> <yellow>{player}</yellow> <gray>has achieved the rank of</gray> {rank_display}<gray>!</gray>"
+
+  # Legacy format
+  legacy-format: "&8[&6★&8] &e{player} &7has achieved the rank of &r{rank_display}&7!"
+
+  # Special broadcast for milestone ranks (every 10th rank)
+  milestone:
+    enabled: true
+    format: "<dark_gray>[<gradient:#FFD700:#FF6B6B>★★★</gradient>]</dark_gray> <gold><bold>{player}</bold></gold> <yellow>has reached a milestone!</yellow> <gray>Now:</gray> {rank_display}"
+
+# ============================================
+#             EFFECT SETTINGS
+# ============================================
+effects:
+  # Title displayed on rankup
+  title:
+    enabled: true
+    fade-in: 10   # ticks
+    stay: 70      # ticks
+    fade-out: 20  # ticks
+
+  # Subtitle displayed on rankup
+  subtitle:
+    enabled: true
+
+  # Action bar message on rankup
+  actionbar:
+    enabled: true
+    duration: 60  # ticks
+
+  # Sound effect on rankup
+  sound:
+    enabled: true
+    volume: 1.0
+    pitch: 1.0
+
+  # Firework effect on rankup
+  firework:
+    enabled: false
+    amount: 1
+    # Firework colors (RGB values)
+    colors:
+      - [255, 215, 0]   # Gold
+      - [255, 165, 0]   # Orange
+    fade-colors:
+      - [255, 255, 0]   # Yellow
+    flicker: true
+    trail: true
+    type: "BALL_LARGE"  # BALL, BALL_LARGE, BURST, CREEPER, STAR
+
+  # Particle effects on rankup
+  particles:
+    enabled: true
+    type: "TOTEM_OF_UNDYING"
+    count: 50
+
+  # Lightning strike effect (visual only, no damage)
+  lightning:
+    enabled: false
+
+# ============================================
+#              GUI SETTINGS
+# ============================================
+gui:
+  # Ranks progression GUI
+  ranks:
+    title: "<dark_gray><bold>✦</bold></dark_gray> <gradient:#FFD700:#FFA500><bold>Rank Progression</bold></gradient> <dark_gray><bold>✦</bold></dark_gray>"
+    legacy-title: "&8&l✦ &6&lRank Progression &8&l✦"
+    rows: 6  # 1-6
+
+    # Navigation items
+    navigation:
+      previous-page:
+        material: "ARROW"
+        slot: 45
+        name: "<yellow>← Previous Page</yellow>"
+      next-page:
+        material: "ARROW"
+        slot: 53
+        name: "<yellow>Next Page →</yellow>"
+      close:
+        material: "BARRIER"
+        slot: 49
+        name: "<red>Close</red>"
+      info:
+        material: "BOOK"
+        slot: 4
+        name: "<gold><bold>Your Journey</bold></gold>"
+
+    # Rank item display settings
+    items:
+      completed:
+        glow: true
+        lore-prefix: "<green>✔ Completed</green>"
+      current:
+        glow: true
+        lore-prefix: "<yellow>★ Current Rank</yellow>"
+      available:
+        glow: false
+        lore-prefix: "<aqua>➤ Available</aqua>"
+      locked:
+        glow: false
+        lore-prefix: "<red>✖ Locked</red>"
+        # Replace icon with this for locked ranks
+        override-material: "GRAY_DYE"
+
+  # Top players GUI
+  top:
+    title: "<dark_gray><bold>✦</bold></dark_gray> <gradient:#00CED1:#1E90FF><bold>Top Rankers</bold></gradient> <dark_gray><bold>✦</bold></dark_gray>"
+    legacy-title: "&8&l✦ &b&lTop Rankers &8&l✦"
+    rows: 6
+    entries-per-page: 28
+
+    # Display settings
+    display:
+      show-heads: true
+      head-slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
+
+    # Medal colors for top 3
+    medals:
+      first: "<gradient:#FFD700:#FFC400><bold>🥇 #1</bold></gradient>"
+      second: "<gradient:#C0C0C0:#A8A8A8><bold>🥈 #2</bold></gradient>"
+      third: "<gradient:#CD7F32:#B8860B><bold>🥉 #3</bold></gradient>"
+
+# ============================================
+#              SOUND SETTINGS
+# ============================================
+sounds:
+  # Sound when successfully ranking up
+  rankup-success: "ENTITY_PLAYER_LEVELUP"
+  rankup-success-pitch: 1.2
+
+  # Sound when rankup fails
+  rankup-fail: "ENTITY_VILLAGER_NO"
+  rankup-fail-pitch: 0.8
+
+  # Sound when opening GUI
+  gui-open: "BLOCK_CHEST_OPEN"
+  gui-open-pitch: 1.0
+
+  # Sound when clicking GUI item
+  gui-click: "UI_BUTTON_CLICK"
+  gui-click-pitch: 1.0
+
+  # Sound for milestone ranks
+  milestone: "UI_TOAST_CHALLENGE_COMPLETE"
+  milestone-pitch: 1.0
+
+# ============================================
+#           PERMISSION SETTINGS
+# ============================================
+permissions:
+  # Base permission node
+  base: "shinoburankup.use"
+
+  # Bypass cooldown permission
+  bypass-cooldown: "shinoburankup.bypass.cooldown"
+
+  # Admin permissions
+  admin:
+    reload: "shinoburankup.admin.reload"
+    setrank: "shinoburankup.admin.setrank"
+    reset: "shinoburankup.admin.reset"
+    give: "shinoburankup.admin.give"
+
+# ============================================
+#         PLACEHOLDER SETTINGS
+# ============================================
+placeholders:
+  # Enable PlaceholderAPI integration
+  enabled: true
+
+  # Custom placeholder formats
+  formats:
+    rank-display: "{rank_display}"
+    rank-name: "{rank_name}"
+    rank-order: "{rank_order}"
+    rank-cost: "{rank_cost}"
+    next-rank: "{next_rank}"
+    next-rank-cost: "{next_rank_cost}"
+    progress: "{progress}"
+    progress-bar: "{progress_bar}"
+
+# ============================================
+#            HOOKS & INTEGRATIONS
+# ============================================
+hooks:
+  # Vault (required for economy)
+  vault:
+    enabled: true
+
+  # PlaceholderAPI
+  placeholderapi:
+    enabled: true
+
+  # LuckPerms (for permission groups)
+  luckperms:
+    enabled: true
+    # Sync rank with LuckPerms group
+    sync-groups: false
+    group-prefix: "rank_"
+
+  # DiscordSRV
+  discordsrv:
+    enabled: false
+    # Channel ID to send rankup messages
+    channel-id: "000000000000000000"
+    # Only broadcast milestone ranks to Discord
+    milestones-only: true
+
+# ============================================
+#         ACTION BAR PROGRESS
+# ============================================
+# Shows rankup progress in the action bar
+actionbar-progress:
+  enabled: false
+  format: "&7{rank_display} &8[&a{progress_bar}&8] &e{progress}% &7-> &6{next_rank}"
+  update-ticks: 20
+  show-at-max-rank: false
+
+# ============================================
+#             TAB LIST
+# ============================================
+# Shows rank prefix in the player tab list
+tablist:
+  enabled: false
+  format: "{rank_prefix}{player}"
+
+# ============================================
+#         PERFORMANCE SETTINGS
+# ============================================
+# OPTIMIZATION: These settings control the command queue system
+# that prevents lag during mass rankups (/rankupmax)
+performance:
+  # Queue processing mode:
+  # - ROUND_ROBIN: Fair distribution - alternates between players (RECOMMENDED)
+  #                Each player receives rewards at the same rate
+  # - FIFO: First In, First Out - processes in order received
+  #         Players who use /rankupmax first get rewards first
+  # Default: ROUND_ROBIN
+  queue-mode: ROUND_ROBIN
+
+  # Number of commands to execute per server tick
+  # Lower = less lag but slower execution
+  # Higher = faster execution but more strain on server
+  # Recommended: 10-15 for most servers, 20-30 for large servers
+  # Default: 10 (200 commands = 1 second at 20 TPS)
+  commands-per-tick: 10
+
+  # Ticks between each batch of command execution
+  # 1 tick = 50ms at 20 TPS
+  # Default: 1 (execute batch every tick)
+  tick-interval: 1
+
+  # Maximum commands that can be queued per player
+  # Prevents memory issues with excessive commands
+  # Default: 1000
+  max-queue-per-player: 1000
+
+  # Enable debug logging for command queue
+  # Shows when commands are queued and executed
+  # Default: false
+  debug-logging: false

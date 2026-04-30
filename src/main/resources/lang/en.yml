@@ -1,0 +1,447 @@
+# ShinobuRankup - English Language File
+# Version: 2.1.0 - Premium Edition
+#
+# PLACEHOLDERS:
+# {player}           - Player name
+# {rank}             - Rank display name (with prefix/colors)
+# {rank_id}          - Rank internal ID
+# {previous_rank}    - Previous rank display
+# {old_rank}         - Previous rank display (alias)
+# {next_rank}        - Next rank display
+# {cost}             - Cost amount formatted
+# {balance}          - Player balance formatted
+# {needed}           - Amount needed formatted
+# {remaining}        - Remaining after purchase
+# {total_spent}      - Total money spent
+# {total_cost}       - Total cost (for max rankup)
+# {count}            - Number of rankups
+# {progress}         - Progress percentage
+# {progress_bar}     - Visual progress bar
+# {rank_order}       - Rank position number
+# {total_ranks}      - Total ranks count
+# {tier}             - Rank tier level
+# {ranks_away}       - Ranks until target
+# {position}         - Leaderboard position
+
+# ============================================
+#              GENERAL MESSAGES
+# ============================================
+general:
+  prefix: "&6&lRankup &8> "
+  no-permission: "&cInsufficient permissions."
+  player-only: "&cOnly players can use this command."
+  player-not-found: "&cPlayer &f{player} &cnot found."
+  invalid-arguments: "&cInvalid usage. Try &f/shinobu help"
+  console-only: "&cConsole only command."
+  invalid-number: "&f{input} &cis not a valid number."
+  economy-error: "&cEconomy error. Contact an administrator."
+  database-error: "&cDatabase error. Contact an administrator."
+  already-processing: "&cPlease wait, processing..."
+
+# ============================================
+#              ADMIN COMMANDS
+# ============================================
+admin:
+  info:
+    header: "&6&lPlayer Information"
+    line: "&8| &7{player} &8- &f{rank} &8(&e{rank_order}&8/&e{total_ranks}&8)"
+    details: "&8| &7Balance: &a{balance} &8| &7Next: &6{next_rank_cost}"
+    no-next-rank: "&8| &aMaximum rank achieved"
+    error: "&cFailed to retrieve player information."
+
+  help:
+    header: "&6&lShinobuRankup Commands"
+    player-commands: |
+
+      &e Player Commands
+      &8| &f/rankup &7- Advance to next rank
+      &8| &f/rankupmax &7- Maximize your progress
+      &8| &f/ranks &7- Browse all ranks
+      &8| &f/ranktop &7- View leaderboard
+    admin-commands: |
+
+      &c Admin Commands
+      &8| &f/shinobu reload &7- Reload configs
+      &8| &f/shinobu setrank &e<player> <rank> &7- Set rank
+      &8| &f/shinobu reset &e<player> &7- Reset player
+      &8| &f/shinobu info &e<player> &7- View info
+    footer: ""
+
+  reload:
+    success: "&aConfiguration reloaded. &8(&f{rank_count} ranks&8)"
+    fail: "&cReload failed. Check console."
+
+  setrank:
+    success: "&aSet &f{player}&a's rank to {rank}"
+    success-target: "&aYour rank was set to {rank}"
+    fail: "&cFailed to set rank."
+    rank-not-found: "&cRank &f{rank_id} &cdoes not exist."
+
+  reset:
+    success: "&aReset &f{player}&a's progress."
+    success-target: "&aYour progress has been reset."
+
+# ============================================
+#              RANKUP COMMAND
+# ============================================
+rankup:
+  processing: "&7Ranking up..."
+
+  success:
+    message: "&a&lSUCCESS &8> &7Advanced to {rank} &8(&6-{cost}&8)"
+    title: "&a&lRANK UP"
+    subtitle: "{rank}"
+    actionbar: "&6+1 &8| &7Now: {rank}"
+
+  milestone:
+    message: "&6&lMILESTONE &8> &e{player} &7reached {rank}"
+    title: "&6&lMILESTONE"
+    subtitle: "{rank}"
+
+  fail-no-money: "&cNeed &6{cost}&c, have &6{balance}"
+  fail-max-rank: "&6Already at maximum rank!"
+  max-rank-reached: "&6MAX"
+  error: "&cRankup failed. Try again."
+
+  confirmation:
+    message: "&eConfirm rankup to {next_rank} &7for &6{cost}&7? Type &a/rankup confirm"
+    title: "&eConfirm?"
+    subtitle: "&6{cost}"
+
+  cancelled: "&7Rankup cancelled."
+  timeout: "&cConfirmation expired."
+
+  already-processing: "&cPlease wait, your rankup is being processed."
+  cooldown: "&cYou must wait &f{remaining} &cseconds before ranking up again."
+  requirements-not-met: "&cYou don't meet the requirements for this rank:"
+  requirement-playtime: "  &8- &7Playtime: &c{current} &7/ &a{required}"
+  requirement-kills: "  &8- &7Kills: &c{current} &7/ &a{required}"
+  requirement-level: "  &8- &7Level: &c{current} &7/ &a{required}"
+  requirement-permission: "  &8- &7Permission: &c{permission} &7(not granted)"
+  requirement-items: "  &8- &7Items: &c{current}&7/&a{required} &7{item}"
+  requirement-player-kills: "  &8- &7PvP Kills: &c{current} &7/ &a{required}"
+  requirement-mob-kills: "  &8- &7Mob Kills: &c{current} &7/ &a{required}"
+  requirement-placeholder: "  &8- &7{required} &7(current: &c{current}&7)"
+  bypass-cost: "&aYour rankup cost was bypassed (free)."
+
+# ============================================
+#              RANKUPMAX COMMAND
+# ============================================
+rankupmax:
+  processing: "&7Processing max rankup..."
+
+  success:
+    message: "&b&lMAX RANKUP &8> &f+{count} &7ranks &8| &7Now: {rank_display} &8| &7Spent: &6{total_cost_formatted} &8| &7Left: &a{balance_formatted}"
+    title: "&b&lMAX RANKUP"
+    subtitle: "&f+{count} &7ranks"
+
+  fail: "&cCannot rank up. Max rank or insufficient funds."
+  disabled: "&c[FREE] &7Upgrade to Premium for /rankupmax"
+
+  limit-reached: "&eLimit reached &8(&f{count}&8/&f{limit}&8)&7. Run again to continue."
+
+# ============================================
+#              RANKS COMMAND
+# ============================================
+ranks:
+  opening: "&7Opening ranks..."
+  error: "&cFailed to open ranks menu."
+
+# ============================================
+#              RANKTOP COMMAND
+# ============================================
+ranktop:
+  opening: "&7Opening leaderboard..."
+  loading: "&7Loading..."
+  error: "&cFailed to open leaderboard."
+
+# ============================================
+#              BROADCAST MESSAGES
+# ============================================
+broadcast:
+  rankup: "&8[&6*&8] &f{player} &7ranked up to {rank}"
+  milestone: "&8[&6**&8] &6{player} &7reached milestone: {rank}"
+  max-rankup: "&8[&b*&8] &f{player} &7gained &b{count} &7ranks! Now: {rank_display}"
+
+# ============================================
+#              GUI - RANKS MENU
+# ============================================
+gui:
+  ranks:
+    title: "&0Ranks"
+
+    status:
+      unlocked: "&aUnlocked"
+      current: "&eCurrent"
+      available: "&bAvailable"
+      locked: "&cLocked"
+
+    item:
+      status: "{status}"
+      cost: "&6{cost}"
+      order: "#{order}"
+      progress: "Progress:"
+      requirements: "Requirements:"
+      requirements-more: "&7+{count} more"
+      rewards: "Rewards:"
+      rewards-more: "&7+{count} more"
+      commands-reward: "{count} command(s)"
+      broadcast-reward: "Announcement"
+
+    action:
+      click-rankup: "&aClick to rank up"
+      current-rank: "&eThis is your rank"
+      already-achieved: "&aAlready achieved"
+      complete-previous: "&cComplete previous first"
+
+    click:
+      current: "&eThis is your current rank"
+      completed: "&aYou already have this rank"
+      locked: "&cComplete previous ranks first"
+
+    page-title: "&7Page {current}/{total}"
+    page-lore:
+      - "&8{current} of {total}"
+
+    refresh-title: "&bRefresh"
+    refresh-lore:
+      - "&7Update display"
+
+    player-info:
+      title: "&6Your Progress"
+      current-rank: "&7Rank: {rank}"
+      next-rank: "&7Next: {rank}"
+      progress-title: "&eProgress:"
+      balance: "&aBalance: {balance}"
+      need: "&cNeed: {amount}"
+      max-rank: "&a&l✓ Max rank reached!"
+
+    info-title: "&6Progress"
+    info-lore:
+      - ""
+      - "&7Rank: {rank}"
+      - "&7{progress_bar}"
+      - ""
+      - "&7Next: {next_rank}"
+      - "&7Cost: &6{next_rank_cost}"
+
+    previous-page: "&7<< Back"
+    previous-page-lore:
+      - "&8Previous page"
+
+    next-page: "&7Next >>"
+    next-page-lore:
+      - "&8Next page"
+
+    close: "&cClose"
+    close-lore:
+      - "&8Exit menu"
+
+    completed:
+      - ""
+      - "&a&lCOMPLETED"
+      - "&8Already achieved"
+
+    current:
+      - ""
+      - "&e&lCURRENT"
+      - "{description}"
+      - ""
+      - "&7Tier {tier} &8| &7#{rank_order}"
+
+    available:
+      - ""
+      - "&b&lAVAILABLE"
+      - "{description}"
+      - ""
+      - "&7Cost: &6{cost}"
+      - "&7Have: &a{balance}"
+      - ""
+      - "&aClick to rank up"
+
+    locked:
+      - ""
+      - "&c&lLOCKED"
+      - "{description}"
+      - ""
+      - "&7Cost: &6{cost}"
+      - "&7Away: &c{ranks_away}"
+
+  # ============================================
+  #              GUI - CONFIRM RANKUP
+  # ============================================
+  confirm:
+    title: "&0Confirm Rankup"
+
+    # Current rank item (left side)
+    current-rank: "Current Rank"
+    current-rank-lore:
+      - ""
+      - "&7Your current rank:"
+      - "{rank_display}"
+      - ""
+
+    # Arrow in the middle
+    arrow-title: "&e&l>>>"
+    arrow-lore:
+      - ""
+      - "&7{current_rank}"
+      - "&e  >>>"
+      - "&a{next_rank}"
+      - ""
+
+    # Next rank item (right side)
+    next-rank: "Next Rank"
+    next-rank-lore:
+      - ""
+      - "&7You will rank up to:"
+      - "{rank_display}"
+      - ""
+
+    # Cost display (center)
+    cost-title: "&6&l{cost}"
+    cost-sufficient: "&a&l✓ SUFFICIENT"
+    cost-insufficient: "&c&l✗ INSUFFICIENT"
+    cost-balance: "&7Balance: {color}{balance}"
+    cost-amount: "&7Cost: &6{cost}"
+    cost-after: "&7After: &a{remaining}"
+    cost-need: "&7Missing: &c{needed}"
+
+    # Confirm button (green)
+    confirm-button: "&a&lCONFIRM RANKUP"
+    confirm-lore:
+      - ""
+      - "&7Rank up to {rank_display}"
+      - "&7Cost: &6{cost}"
+      - ""
+      - "&a>>> Click to confirm <<<"
+
+    # Cannot afford button (gray)
+    cannot-afford-button: "&c&lINSUFFICIENT FUNDS"
+    cannot-afford-lore:
+      - ""
+      - "&7Your balance: &c{balance}"
+      - "&7Rank cost: &6{cost}"
+      - "&7You need: &c{needed}"
+      - ""
+      - "&8Get more money to rank up"
+
+    # Cancel button (red)
+    cancel-button: "&c&lCANCEL"
+    cancel-lore:
+      - ""
+      - "&7Return to ranks menu"
+      - "&8No changes will be made"
+
+    # Rewards section
+    rewards-title: "&6&lREWARDS"
+    rewards-header: "&eYou will receive:"
+    rewards-commands: "&6Commands:"
+    rewards-broadcast: "&dGlobal Announcement:"
+    rewards-items: "&bItems:"
+    rewards-more: "&7... and {count} more"
+
+    # Error message
+    no-money: "&c&l✗ &cYou don't have enough money to rank up!"
+
+    # Rank not found error
+    error-title: "&c&lERROR"
+    error-lore:
+      - ""
+      - "&cRank not found"
+      - "&8ID: {rank_id}"
+
+    # Success messages
+    success-title: "&a&l✓ SUCCESS"
+    success-subtitle: "&fRanked up to {rank}"
+    success-chat-title: "&a&lRanked Up!"
+    success-chat-message: "&7You are now: {rank}"
+    success-chat-cost: "&8Paid: &6{cost}"
+    success-divider: "&8&m                              "
+
+  # ============================================
+  #              GUI - TOP PLAYERS
+  # ============================================
+  top:
+    title: "&0Top Players"
+
+    header-title: "&6&lLeaderboard"
+    header-lore:
+      - ""
+      - "&7Top ranked players"
+      - "&8{count} total"
+
+    position:
+      first: "&6#1"
+      second: "&f#2"
+      third: "&c#3"
+      generic: "#{position}"
+
+    player-entry:
+      position: "#{position}"
+      rank: "{rank}"
+      balance: "&a{balance}"
+      total-spent: "&c{amount} spent"
+      rankups-done: "&d{count} rankups"
+      progress-title: "Progress:"
+      max-rank: "&aMax rank!"
+      online: "&aOnline"
+      offline: "&7Offline"
+
+    empty-slot: "&8Empty"
+    empty-slot-lore:
+      - "&7No player yet"
+
+    your-position: "&b&lYour Stats"
+    your-position-not-ranked: "&7Not ranked"
+    your-position-ranked: "#{position}"
+    your-position-rank: "{rank}"
+    your-position-rankups: "&d{count} rankups"
+
+    server-stats-title: "&a&lServer Stats"
+    server-stats:
+      total-players: "&f{count} &7players"
+      total-rankups: "&d{count} &7rankups"
+      total-spent: "&6{amount} &7spent"
+      top-holder: "&eTop: {player}"
+      top-holder-none: "&7None"
+
+    refresh: "&bInfo"
+    refresh-lore:
+      - "&7Updates every 5min"
+    refresh-message: "&7Leaderboard updates every 5 minutes."
+
+    click:
+      header: ""
+      title: "&e{player}"
+      rank: "&7Rank: {rank}"
+      balance: "&7Balance: &a{balance}"
+      spent: "&7Spent: &c{amount}"
+      rankups: "&7Rankups: &d{count}"
+      status-online: "&aOnline"
+      status-offline: "&7Offline"
+
+    loading: "&7Loading..."
+
+# ============================================
+#              FORMAT SETTINGS
+# ============================================
+format:
+  progress-bar:
+    filled-char: "|"
+    empty-char: "|"
+    length: 20
+    filled-color: "&a"
+    empty-color: "&8"
+
+  numbers:
+    currency-symbol: "$"
+    thousand: "K"
+    million: "M"
+    billion: "B"
+    trillion: "T"
+
+  time:
+    hours: "{amount}h"
+    minutes: "{amount}m"
+    seconds: "{amount}s"

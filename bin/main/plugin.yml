@@ -1,0 +1,149 @@
+name: ShinobuRankup
+version: '${version}'
+main: com.shinobu.rankup.ShinobuRankup
+api-version: '1.17'
+prefix: ShinobuRankup
+authors:
+  - Shinobu
+description: A professional rankup plugin with beautiful GUIs, gradients, async support, and anti-dupe protection
+website: https://github.com/shinobu/ShinobuRankup
+
+# Plugin load order
+load: POSTWORLD
+
+# Soft dependencies - plugin will work without them but benefits from them
+softdepend:
+  - Vault
+  - PlaceholderAPI
+  - LuckPerms
+  - DiscordSRV
+
+# Commands
+commands:
+  rankup:
+    description: Rank up to the next rank
+    usage: /<command>
+    aliases: [ru, upgrade]
+    permission: shinoburankup.rankup
+    permission-message: You don't have permission to use this command!
+
+  rankupmax:
+    description: Rank up as many times as you can afford
+    usage: /<command>
+    aliases: [rumax, maxrankup]
+    permission: shinoburankup.rankupmax
+    permission-message: You don't have permission to use this command!
+
+  ranks:
+    description: Open the ranks progression GUI
+    usage: /<command>
+    aliases: [rank, progression]
+    permission: shinoburankup.rank
+    permission-message: You don't have permission to use this command!
+
+  rankuptop:
+    description: Open the top players leaderboard
+    usage: /<command> [page]
+    aliases: [rutop, ranktop, leaderboard]
+    permission: shinoburankup.top
+    permission-message: You don't have permission to use this command!
+
+  shinoburankup:
+    description: Admin commands for managing rankups
+    usage: /<command> <reload|setrank|reset|info|give>
+    aliases: [shinobu, sru, ruadmin, rankadmin]
+    permission: shinoburankup.admin
+    permission-message: You don't have permission to use this command!
+
+# Permissions
+permissions:
+  # Base user permission group
+  shinoburankup.use:
+    description: Use basic rankup features
+    default: true
+    children:
+      shinoburankup.rankup: true
+      shinoburankup.rank: true
+      shinoburankup.top: true
+
+  shinoburankup.rankup:
+    description: Permission to use /rankup command
+    default: true
+
+  shinoburankup.rankupmax:
+    description: Permission to use /rankupmax command
+    default: true
+
+  shinoburankup.rank:
+    description: Permission to use /ranks command and GUI
+    default: true
+
+  shinoburankup.top:
+    description: Permission to view the leaderboard
+    default: true
+
+  shinoburankup.gui:
+    description: Permission to use the rankup GUI
+    default: true
+
+  # Admin permissions
+  shinoburankup.admin:
+    description: All admin permissions
+    default: op
+    children:
+      shinoburankup.admin.reload: true
+      shinoburankup.admin.setrank: true
+      shinoburankup.admin.reset: true
+      shinoburankup.admin.info: true
+      shinoburankup.admin.give: true
+
+  shinoburankup.admin.reload:
+    description: Permission to reload the plugin configuration
+    default: op
+
+  shinoburankup.admin.setrank:
+    description: Permission to set a player's rank
+    default: op
+
+  shinoburankup.admin.reset:
+    description: Permission to reset a player's progression data
+    default: op
+
+  shinoburankup.admin.info:
+    description: Permission to view plugin info and player stats
+    default: op
+
+  shinoburankup.admin.give:
+    description: Permission to give free rankups to players
+    default: op
+
+  # Bypass permissions
+  shinoburankup.bypass:
+    description: All bypass permissions
+    default: op
+    children:
+      shinoburankup.bypass.cooldown: true
+      shinoburankup.bypass.cost: true
+      shinoburankup.bypass.requirements: true
+
+  shinoburankup.bypass.cooldown:
+    description: Bypass rankup cooldown timer
+    default: op
+
+  shinoburankup.bypass.cost:
+    description: Bypass rankup cost (free rankups)
+    default: op
+
+  shinoburankup.bypass.requirements:
+    description: Bypass additional rank requirements
+    default: op
+
+  # Wildcard permission (bypass NOT included - must be granted explicitly)
+  shinoburankup.*:
+    description: All ShinobuRankup permissions (excludes bypass)
+    default: op
+    children:
+      shinoburankup.use: true
+      shinoburankup.rankupmax: true
+      shinoburankup.gui: true
+      shinoburankup.admin: true

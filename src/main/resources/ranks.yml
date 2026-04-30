@@ -1,0 +1,1100 @@
+# ─────────────────────────────────────────────────────────────
+# ShinobuRankup - Ranks Configuration v3.0.0
+# 31 ranks across 3 tiers (★0-30)
+# Both {player} and %player% work in commands
+# Prefixes: [console], [player], [message]
+# ─────────────────────────────────────────────────────────────
+
+default-rank: "star_0"
+
+ranks:
+  # ── TIER 1: Beginner (★0-10) ──
+
+  star_0:
+    display-name: "&fRankup &8| &8[&#FFF0850★&8]"
+    prefix: "&8[&#FFF0850★&8]"
+    order: 0
+    cost: 0
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Rank up to: &8[&#FFF0851★&8]"
+      - " &fTo receive rewards"
+      - ""
+    commands:
+      - ""
+
+  star_1:
+    display-name: "&fRankup &8| &8[&#FFF0851★&8]"
+    prefix: "&8[&#FFF0851★&8]"
+    order: 1
+    cost: 1000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC1 Hour ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$1M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+1"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 3600
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "nextgen addmax %player% 1"
+      - "crate key give %player% rankup 2"
+
+  star_2:
+    display-name: "&fRankup &8| &8[&#FFF0852★&8]"
+    prefix: "&8[&#FFF0852★&8]"
+    order: 2
+    cost: 3000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC3 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$3M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 10800
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "crate key give %player% rankup 2"
+
+  star_3:
+    display-name: "&fRankup &8| &8[&#FFF0853★&8]"
+    prefix: "&8[&#FFF0853★&8]"
+    order: 3
+    cost: 8000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC6 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$8M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+1"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x1 &7(50 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 21600
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "nextgen addmax %player% 1"
+      - "nextgens sellwands %player% 1 50"
+      - "crate key give %player% rankup 2"
+
+  star_4:
+    display-name: "&fRankup &8| &8[&#FFF0854★&8]"
+    prefix: "&8[&#FFF0854★&8]"
+    order: 4
+    cost: 12000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC8 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$12M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 28800
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "crate key give %player% rankup 2"
+
+  star_5:
+    display-name: "&fRankup &8| &8[&#FFF0855★&8]"
+    prefix: "&8[&#FFF0855★&8]"
+    order: 5
+    cost: 20000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC10 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$20M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 36000
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "crate key give %player% rankup 2"
+
+  star_6:
+    display-name: "&fRankup &8| &8[&#FFDF206★&8]"
+    prefix: "&8[&#FFDF206★&8]"
+    order: 6
+    cost: 30000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC12 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$30M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+1"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x1 &7(75 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 43200
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "nextgen addmax %player% 1"
+      - "nextgens sellwands %player% 1 75"
+      - "crate key give %player% rankup 2"
+
+  star_7:
+    display-name: "&fRankup &8| &8[&#FFDF207★&8]"
+    prefix: "&8[&#FFDF207★&8]"
+    order: 7
+    cost: 50000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC16 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$50M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 157600
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "crate key give %player% rankup 2"
+
+  star_8:
+    display-name: "&fRankup &8| &8[&#FFDF208★&8]"
+    prefix: "&8[&#FFDF208★&8]"
+    order: 8
+    cost: 75000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC20 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$75M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 72000
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "crate key give %player% rankup 2"
+
+  star_9:
+    display-name: "&fRankup &8| &8[&#FFDF209★&8]"
+    prefix: "&8[&#FFDF209★&8]"
+    order: 9
+    cost: 100000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC25 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$100M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+1"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x1 &7(100 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 72000
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "nextgen addmax %player% 1"
+      - "nextgens sellwands %player% 1 100"
+      - "crate key give %player% rankup 2"
+
+  star_10:
+    display-name: "&fRankup &8| &8[&#FFDF2010★&8]"
+    prefix: "&8[&#FFDF2010★&8]"
+    order: 10
+    cost: 150000000
+    icon: COAL
+    glow: true
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC30 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$150M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +2"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 108000
+    commands:
+      - "nextgen addmultiplier %player% 0.2"
+      - "crate key give %player% rankup 2"
+
+  # ── TIER 2: Novice (★11-20) ──
+
+  star_11:
+    display-name: "&fRankup &8| &8[&#D8F99911★&8]"
+    prefix: "&8[&#D8F99911★&8]"
+    order: 11
+    cost: 250000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC36 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$250M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 129600
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "crate key give %player% rankup 4"
+
+  star_12:
+    display-name: "&fRankup &8| &8[&#D8F99912★&8]"
+    prefix: "&8[&#D8F99912★&8]"
+    order: 12
+    cost: 300000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC42 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$300M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x1.5 &7(25 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 151200
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "nextgen addmax %player% 2"
+      - "nextgens sellwands %player% 1.5 25"
+      - "crate key give %player% rankup 4"
+
+  star_13:
+    display-name: "&fRankup &8| &8[&#D8F99913★&8]"
+    prefix: "&8[&#D8F99913★&8]"
+    order: 13
+    cost: 400000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC48 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$400M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 172800
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "crate key give %player% rankup 4"
+
+  star_14:
+    display-name: "&fRankup &8| &8[&#D8F99914★&8]"
+    prefix: "&8[&#D8F99914★&8]"
+    order: 14
+    cost: 500000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC54 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$500M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 194400
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "crate key give %player% rankup 4"
+
+  star_15:
+    display-name: "&fRankup &8| &8[&#D8F99915★&8]"
+    prefix: "&8[&#D8F99915★&8]"
+    order: 15
+    cost: 750000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC60 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$750M 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x1.5 &7(50 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 216000
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "nextgen addmax %player% 2"
+      - "nextgens sellwands %player% 1.5 50"
+      - "crate key give %player% rankup 4"
+
+  star_16:
+    display-name: "&fRankup &8| &8[&#BBF45116★&8]"
+    prefix: "&8[&#BBF45116★&8]"
+    order: 16
+    cost: 1000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC66 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$1B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 237600
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "crate key give %player% rankup 4"
+
+  star_17:
+    display-name: "&fRankup &8| &8[&#BBF45117★&8]"
+    prefix: "&8[&#BBF45117★&8]"
+    order: 17
+    cost: 1500000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC72 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$1.5B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 259200
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "crate key give %player% rankup 4"
+
+  star_18:
+    display-name: "&fRankup &8| &8[&#BBF45118★&8]"
+    prefix: "&8[&#BBF45118★&8]"
+    order: 18
+    cost: 2000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC80 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$2B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+2"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x1.5 &7(70 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 288000
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "nextgen addmax %player% 2"
+      - "nextgens sellwands %player% 1.5 75"
+      - "crate key give %player% rankup 4"
+
+  star_19:
+    display-name: "&fRankup &8| &8[&#BBF45119★&8]"
+    prefix: "&8[&#BBF45119★&8]"
+    order: 19
+    cost: 3500000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC88 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$3.5B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 316800
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "crate key give %player% rankup 4"
+
+  star_20:
+    display-name: "&fRankup &8| &8[&#BBF45120★&8]"
+    prefix: "&8[&#BBF45120★&8]"
+    order: 20
+    cost: 5000000000
+    icon: COAL
+    glow: true
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC96 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$5B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +4"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 345600
+    commands:
+      - "nextgen addmultiplier %player% 0.3"
+      - "crate key give %player% rankup 4"
+
+  # ── TIER 3: Intermediate (★21-30) ──
+
+  star_21:
+    display-name: "&fRankup &8| &8[&#A2F4FD21★&8]"
+    prefix: "&8[&#A2F4FD21★&8]"
+    order: 21
+    cost: 10000000000
+    icon: COAL
+    glow: true
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC104 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$10B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x1.5 &7(100 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 374400
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "nextgen addmax %player% 3"
+      - "nextgens sellwands %player% 1.5 100"
+      - "crate key give %player% rankup 6"
+
+  star_22:
+    display-name: "&fRankup &8| &8[&#A2F4FD22★&8]"
+    prefix: "&8[&#A2F4FD22★&8]"
+    order: 22
+    cost: 20000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC112 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$20B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 403200
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "crate key give %player% rankup 6"
+
+  star_23:
+    display-name: "&fRankup &8| &8[&#A2F4FD23★&8]"
+    prefix: "&8[&#A2F4FD23★&8]"
+    order: 23
+    cost: 35000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC120 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$35B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 432000
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "crate key give %player% rankup 6"
+
+  star_24:
+    display-name: "&fRankup &8| &8[&#A2F4FD24★&8]"
+    prefix: "&8[&#A2F4FD24★&8]"
+    order: 24
+    cost: 50000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC128 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$50B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x2 &7(25 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 460800
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "nextgen addmax %player% 3"
+      - "nextgens sellwands %player% 2 25"
+      - "crate key give %player% rankup 6"
+
+  star_25:
+    display-name: "&fRankup &8| &8[&#A2F4FD25★&8]"
+    prefix: "&8[&#A2F4FD25★&8]"
+    order: 25
+    cost: 100000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC136 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$100B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 489600
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "crate key give %player% rankup 6"
+
+  star_26:
+    display-name: "&fRankup &8| &8[&#53EAFD26★&8]"
+    prefix: "&8[&#53EAFD26★&8]"
+    order: 26
+    cost: 150000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC144 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$150B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 518400
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "crate key give %player% rankup 6"
+
+  star_27:
+    display-name: "&fRankup &8| &8[&#53EAFD27★&8]"
+    prefix: "&8[&#53EAFD27★&8]"
+    order: 27
+    cost: 200000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC154 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$200B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+3"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x2 &7(50 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 554400
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "nextgen addmax %player% 3"
+      - "nextgens sellwands %player% 2 50"
+      - "crate key give %player% rankup 6"
+
+  star_28:
+    display-name: "&fRankup &8| &8[&#53EAFD28★&8]"
+    prefix: "&8[&#53EAFD28★&8]"
+    order: 28
+    cost: 300000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC164 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$300B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 590400
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "crate key give %player% rankup 6"
+
+  star_29:
+    display-name: "&fRankup &8| &8[&#53EAFD29★&8]"
+    prefix: "&8[&#53EAFD29★&8]"
+    order: 29
+    cost: 450000000000
+    icon: COAL
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC176 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$450B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 633600
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "crate key give %player% rankup 6"
+
+  star_30:
+    display-name: "&fRankup &8| &8[&#53EAFD30★&8]"
+    prefix: "&8[&#53EAFD30★&8]"
+    order: 30
+    cost: 600000000000
+    icon: COAL
+    glow: true
+    description:
+      - "&#26c8f9📒 Information"
+      - " &fReceive extra upgrades to improve"
+      - " &fyour experience just by"
+      - " &fplaying on our server!"
+    lore:
+      - ""
+      - "&#f9a23e✰ Requirements:"
+      - " &#FBCC23🏴 &fTime Played &#946FEC188 Hours ⌚"
+      - " &#FBCC23🏴 &fMoney Needed &#feb801$600B 💰"
+      - ""
+      - "&#FFDF20☃ Progress:"
+      - " {progress_bar} {status_color}{progress}%"
+      - ""
+      - "&#FFDF20🕐 Time Required: &7{playtime_required}"
+      - " {playtime_progress_bar} &e{playtime_progress}%"
+      - ""
+      - "&#5BFB1A✔ Rewards:"
+      - " &#05f800🧪 &fMultiplier: &#05f800x0.4"
+      - " &#FF8904🔑 &fKey: &#FF8904Rankup +6"
+      - " &#9FFB08⛺ &fSlots: &#9FFB08+3"
+      - " &#FFCC00🪓 &fSellWand: &#FFCC00x2 &7(75 Uses)"
+      - ""
+      - "&#f9ee29⮕ &lCLICK&r &#f9ee29to rank up"
+    requirements:
+      min-playtime: 633600
+    commands:
+      - "nextgen addmultiplier %player% 0.4"
+      - "nextgen addmax %player% 3"
+      - "nextgens sellwands %player% 2 75"
+      - "crate key give %player% rankup 6"

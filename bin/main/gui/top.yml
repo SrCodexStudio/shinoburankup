@@ -1,0 +1,182 @@
+# ============================================================================
+#  ____  _     _             _           ____             _
+# / ___|| |__ (_)_ __   ___ | |__  _   _|  _ \ __ _ _ __ | | ___   _ _ __
+# \___ \| '_ \| | '_ \ / _ \| '_ \| | | | |_) / _` | '_ \| |/ / | | | '_ \
+#  ___) | | | | | | | | (_) | |_) | |_| |  _ < (_| | | | |   <| |_| | |_) |
+# |____/|_| |_|_|_| |_|\___/|_.__/ \__,_|_| \_\__,_|_| |_|_|\_\\__,_| .__/
+#                                                                   |_|
+# GUI Configuration - Top Players Leaderboard
+# ============================================================================
+#
+# This file controls the appearance and layout of the /ranktop GUI
+#
+# ============================================================================
+
+# GUI Settings
+settings:
+  # Number of rows (1-6)
+  rows: 6
+
+  # Number of top players to show
+  top-players-count: 10
+
+  # Play sounds?
+  sounds:
+    enabled: true
+    open: "BLOCK_CHEST_OPEN"
+    close: "BLOCK_CHEST_CLOSE"
+    click: "UI_BUTTON_CLICK"
+
+# Background/Filler items
+filler:
+  # Main background
+  background:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  # Border decoration
+  border:
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+
+# Header item
+header:
+  enabled: true
+  slot: 4  # Top center
+  material: "GOLDEN_HELMET"
+  glow: true
+  custom-model-data: 0
+
+# Top 3 players display (special positions)
+podium:
+  # First place
+  first:
+    enabled: true
+    slot: 13  # Center, elevated
+    material: "PLAYER_HEAD"
+    use-player-head: true
+    border-material: "GOLD_BLOCK"
+    border-slots: [3, 4, 5, 12, 14]
+    glow: true
+
+  # Second place
+  second:
+    enabled: true
+    slot: 11  # Left of center
+    material: "PLAYER_HEAD"
+    use-player-head: true
+    border-material: "IRON_BLOCK"
+    border-slots: [1, 2, 10]
+    glow: true
+
+  # Third place
+  third:
+    enabled: true
+    slot: 15  # Right of center
+    material: "PLAYER_HEAD"
+    use-player-head: true
+    border-material: "COPPER_BLOCK"
+    border-slots: [6, 7, 16]
+    glow: true
+
+# Rest of leaderboard (positions 4-10)
+leaderboard:
+  # Slots for positions 4-10
+  slots: [28, 29, 30, 31, 32, 33, 34]
+  # Use player heads for all entries?
+  use-player-heads: true
+  # Fallback material when player head fails
+  fallback-material: "PLAYER_HEAD"
+  # Glow effect
+  glow: false
+  custom-model-data: 0
+
+# Empty slot display (when no player in position)
+empty-slot:
+  material: "GRAY_STAINED_GLASS_PANE"
+  custom-model-data: 0
+
+# Your position panel
+your-position:
+  enabled: true
+  slot: 49  # Bottom center
+  material: "PLAYER_HEAD"
+  use-player-head: true
+  glow: false
+  custom-model-data: 0
+
+# Server statistics
+server-stats:
+  enabled: true
+  slot: 45  # Bottom left
+  material: "BOOK"
+  glow: false
+  custom-model-data: 0
+
+# Info/Refresh button
+info-button:
+  enabled: true
+  slot: 53  # Bottom right
+  material: "CLOCK"
+  glow: false
+  custom-model-data: 0
+
+# Decoration configuration
+decorations:
+  # Top row
+  top-row:
+    enabled: true
+    slots: [0, 8]
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+
+  # Middle separators
+  separators:
+    enabled: true
+    slots: [9, 17, 18, 26, 27, 35]
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  # Bottom decoration
+  bottom-decoration:
+    enabled: true
+    slots: [36, 37, 38, 39, 40, 41, 42, 43, 44, 46, 47, 48, 50, 51, 52]
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+
+  # Podium base decoration
+  podium-base:
+    enabled: true
+    slots: [19, 20, 21, 22, 23, 24, 25]
+    material: "QUARTZ_BLOCK"
+    name: " "
+
+# Position colors (for item names)
+position-colors:
+  first: "&6&l"      # Gold
+  second: "&7&l"     # Silver
+  third: "&c&l"      # Bronze/Copper
+  default: "&f"      # White
+
+# Position materials (alternative to heads)
+position-materials:
+  first: "GOLD_INGOT"
+  second: "IRON_INGOT"
+  third: "COPPER_INGOT"
+  default: "PAPER"
+
+# Click actions
+click-actions:
+  # Show detailed info in chat when clicking a player?
+  show-chat-info: true
+  # Play sound on click?
+  play-sound: true
+  click-sound: "UI_BUTTON_CLICK"
+
+# Animation settings (Premium only)
+animations:
+  enabled: false
+  # Rotating border colors
+  rainbow-border: false
+  # Particle effects on top 3
+  particles: false

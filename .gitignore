@@ -1,0 +1,21 @@
+# Build output
+build/
+out/
+
+# Gradle
+.gradle/
+gradle-app.setting
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive
+proguard/mapping*.txt
+local.properties
