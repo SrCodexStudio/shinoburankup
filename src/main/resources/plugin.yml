@@ -1,0 +1,73 @@
+name: ShinobuStore
+version: ${version}
+main: com.srcodex.shinobustore.ShinobuStore
+api-version: "1.17"
+folia-supported: false
+author: SrCodexStudio
+website: https://github.com/SrCodex/ShinobuStore
+description: Premium in-game store plugin with PayPal integration
+
+softdepend:
+  - PlaceholderAPI
+
+commands:
+  store:
+    description: Open the store menu
+    usage: /<command> [help|reload]
+    aliases:
+      - shop
+      - buy
+      - tienda
+  shinobustore:
+    description: ShinobuStore main command
+    usage: /<command> <store|cancel|timer|lookup|reload|help>
+    aliases:
+      - sstore
+      - ss
+  cancelitem:
+    description: Cancel your pending transaction
+    usage: /<command>
+    aliases:
+      - cancel
+      - canceltransaction
+  timer:
+    description: Check pending transaction expiration
+    usage: /<command>
+    aliases:
+      - transactiontimer
+      - expiration
+  lookup:
+    description: Lookup transaction information
+    usage: /<command> <pending|history> <orderId|playerUUID>
+    aliases:
+      - transactionlookup
+      - lookuporder
+
+permissions:
+  shinobustore.*:
+    description: All ShinobuStore permissions
+    default: op
+    children:
+      shinobustore.use: true
+      shinobustore.reload: true
+      shinobustore.lookup: true
+      shinobustore.admin: true
+      shinobustore.bypass.cooldown: true
+  shinobustore.admin:
+    description: Admin commands (forcecapture, clearpending, debug)
+    default: op
+    children:
+      shinobustore.reload: true
+      shinobustore.lookup: true
+  shinobustore.reload:
+    description: Reload plugin configuration
+    default: op
+  shinobustore.lookup:
+    description: Lookup transaction information
+    default: op
+  shinobustore.use:
+    description: Use the store
+    default: true
+  shinobustore.bypass.cooldown:
+    description: Bypass command cooldowns
+    default: op

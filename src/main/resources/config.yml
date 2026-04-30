@@ -1,0 +1,354 @@
+# ╔══════════════════════════════════════════════════════════════════╗
+# ║                    SHINOBU STORE CONFIGURATION                    ║
+# ║                     Author: SrCodexStudio                         ║
+# ║                     Version: 1.0.0                                ║
+# ╚══════════════════════════════════════════════════════════════════╝
+
+# ┌──────────────────────────────────────────────────────────────────┐
+# │                     PAYPAL CONFIGURATION                         │
+# └──────────────────────────────────────────────────────────────────┘
+paypal:
+  # Your PayPal API credentials
+  # Get them at: https://developer.paypal.com/developer/applications
+  client-id: ""
+  secret: ""
+
+  # PayPal environment: LIVE or SANDBOX
+  # *** IMPORTANT: Use SANDBOX for testing! Change to LIVE only when ready for production! ***
+  environment: "SANDBOX"
+
+  # PayPal fee configuration (varies by country/volume)
+  # Default: US domestic rate (2.9% + $0.30)
+  fee:
+    percentage: 2.9
+    fixed: 0.30
+
+  # Your brand name shown on PayPal checkout
+  brand-name: "Your Server"
+
+  # Currency code (USD, EUR, GBP, etc.)
+  currency: "USD"
+
+  # Display symbol shown next to prices in-game (e.g., $, EUR, R$, MX$, CLP)
+  # This does NOT affect PayPal - only what players see in menus and chat
+  currency-symbol: "$"
+
+# ┌──────────────────────────────────────────────────────────────────┐
+# │                     TRANSACTION SETTINGS                         │
+# └──────────────────────────────────────────────────────────────────┘
+transactions:
+  # How often to check pending transactions (in seconds)
+  check-interval: 300
+
+  # How long before a pending transaction expires (seconds)
+  # Default: 3600 = 1 hour
+  expire-after: 3600
+
+  # Maximum pending transactions per player
+  max-pending-per-player: 1
+
+  # Store transaction history
+  store-history: true
+
+  # Days to keep transaction history (0 = forever)
+  history-retention-days: 90
+
+# ┌──────────────────────────────────────────────────────────────────┐
+# │                     RATE LIMITING                                │
+# └──────────────────────────────────────────────────────────────────┘
+rate-limit:
+  # Enable rate limiting
+  enabled: true
+
+  # Maximum requests per player per minute
+  max-requests-per-minute: 10
+
+  # Cooldown between store opens (in seconds)
+  store-open-cooldown: 3
+
+  # Cooldown between purchase attempts (in seconds)
+  purchase-cooldown: 5
+
+  # Temporary ban duration for abuse (in minutes)
+  abuse-ban-duration: 15
+
+  # Requests threshold for abuse detection
+  abuse-threshold: 50
+
+# ┌──────────────────────────────────────────────────────────────────┐
+# │                     MENU SETTINGS                                │
+# └──────────────────────────────────────────────────────────────────┘
+menu:
+  # Category menu settings
+  category:
+    title: "&b&lShinobu Store"
+    rows: 3
+
+  # Enable menu protection (prevent item extraction)
+  protection:
+    enabled: true
+    # Block shift-click
+    block-shift-click: true
+    # Block number keys
+    block-number-keys: true
+    # Block drop key
+    block-drop: true
+    # Block swap with offhand
+    block-offhand-swap: true
+    # Block dragging
+    block-drag: true
+
+  # Confirmation menu before purchase
+  confirm-menu:
+    enabled: true
+    title: "&8Confirm Purchase"
+
+  # Fill empty slots with this item
+  filler:
+    enabled: true
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  # Sound effects
+  sounds:
+    menu-open: "BLOCK_CHEST_OPEN"
+    menu-click: "UI_BUTTON_CLICK"
+    purchase-start: "ENTITY_EXPERIENCE_ORB_PICKUP"
+    purchase-complete: "ENTITY_PLAYER_LEVELUP"
+    error: "ENTITY_VILLAGER_NO"
+
+# ┌──────────────────────────────────────────────────────────────────┐
+# │                     CATEGORIES                                   │
+# └──────────────────────────────────────────────────────────────────┘
+# Position: slot number (0-53)
+# Material: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# Use "head:<player_name>" or "head:auto" for player heads
+
+categories:
+  ranks:
+    position: 11
+    material: "DIAMOND"
+    display: "&b&lRanks"
+    rows: 3
+    lore:
+      - ""
+      - "&7Purchase a donator rank"
+      - "&7to support the server!"
+      - ""
+      - "&eClick to view options!"
+
+  tags:
+    position: 13
+    material: "NAME_TAG"
+    display: "&6&lTags"
+    rows: 3
+    lore:
+      - ""
+      - "&7Purchase a chat tag"
+      - "&7to customize your profile!"
+      - ""
+      - "&eClick to view options!"
+
+  misc:
+    position: 15
+    material: "GOLD_INGOT"
+    display: "&d&lMiscellaneous"
+    rows: 3
+    lore:
+      - ""
+      - "&7Purchase miscellaneous items"
+      - "&7and perks!"
+      - ""
+      - "&eClick to view options!"
+
+# ┌──────────────────────────────────────────────────────────────────┐
+# │                     STORE ITEMS                                  │
+# └──────────────────────────────────────────────────────────────────┘
+# pass-fee: true = adds PayPal fee to the price (customer pays fee)
+# Commands placeholders: {player}, {uuid}, {item}, {cost}
+
+items:
+  # ═══════════════ RANKS ═══════════════
+  vip:
+    category: "ranks"
+    position: 10
+    material: "IRON_SWORD"
+    display: "&a&lVIP Rank"
+    cost: 10.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Purchase VIP rank for &a$10"
+      - ""
+      - "&fPerks:"
+      - "&8➤ &7Access to &a/nick"
+      - "&8➤ &7Access to &a/heal"
+      - "&8➤ &7Access to &a/feed"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "lp user {player} parent set vip"
+      - "broadcast &a&l{player} &7purchased &a&lVIP &7rank!"
+
+  vip_plus:
+    category: "ranks"
+    position: 12
+    material: "GOLDEN_SWORD"
+    display: "&a&lVIP+ Rank"
+    cost: 15.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Purchase VIP+ rank for &a$15"
+      - ""
+      - "&fPerks:"
+      - "&8➤ &7All VIP perks"
+      - "&8➤ &7Access to &a/fly"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "lp user {player} parent set vip_plus"
+      - "broadcast &a&l{player} &7purchased &a&lVIP+ &7rank!"
+
+  mvp:
+    category: "ranks"
+    position: 14
+    material: "DIAMOND_SWORD"
+    display: "&b&lMVP Rank"
+    cost: 20.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Purchase MVP rank for &b$20"
+      - ""
+      - "&fPerks:"
+      - "&8➤ &7All VIP+ perks"
+      - "&8➤ &7Access to &b/home"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "lp user {player} parent set mvp"
+      - "broadcast &b&l{player} &7purchased &b&lMVP &7rank!"
+
+  mvp_plus:
+    category: "ranks"
+    position: 16
+    material: "NETHERITE_SWORD"
+    display: "&b&lMVP+ Rank"
+    cost: 25.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Purchase MVP+ rank for &b$25"
+      - ""
+      - "&fPerks:"
+      - "&8➤ &7All MVP perks"
+      - "&8➤ &7Access to &b/tp"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "lp user {player} parent set mvp_plus"
+      - "broadcast &b&l{player} &7purchased &b&lMVP+ &7rank!"
+
+  # ═══════════════ TAGS ═══════════════
+  tag_gg:
+    category: "tags"
+    position: 10
+    material: "NAME_TAG"
+    display: "&a&l[GG] &7Tag"
+    cost: 5.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Purchase the GG tag for &a$5"
+      - ""
+      - "&fChat preview:"
+      - "&7Player &a&l[GG]&7: Hello!"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "lp user {player} permission set deluxetags.tag.gg"
+      - "msg {player} &aYou now have access to the &l[GG] &atag!"
+
+  tag_ez:
+    category: "tags"
+    position: 11
+    material: "NAME_TAG"
+    display: "&c&l[EZ] &7Tag"
+    cost: 5.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Purchase the EZ tag for &c$5"
+      - ""
+      - "&fChat preview:"
+      - "&7Player &c&l[EZ]&7: Hello!"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "lp user {player} permission set deluxetags.tag.ez"
+      - "msg {player} &aYou now have access to the &c&l[EZ] &atag!"
+
+  tag_god:
+    category: "tags"
+    position: 12
+    material: "NAME_TAG"
+    display: "&6&l[GOD] &7Tag"
+    cost: 5.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Purchase the GOD tag for &6$5"
+      - ""
+      - "&fChat preview:"
+      - "&7Player &6&l[GOD]&7: Hello!"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "lp user {player} permission set deluxetags.tag.god"
+      - "msg {player} &aYou now have access to the &6&l[GOD] &atag!"
+
+  # ═══════════════ MISC ═══════════════
+  stats_reset:
+    category: "misc"
+    position: 12
+    material: "PAPER"
+    display: "&d&lStats Reset"
+    cost: 5.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Reset your statistics for &d$5"
+      - ""
+      - "&c&lWARNING: &7This cannot be undone!"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "stats reset {player}"
+      - "msg {player} &aYour stats have been reset!"
+
+  coins_1000:
+    category: "misc"
+    position: 14
+    material: "GOLD_NUGGET"
+    display: "&6&l1000 Coins"
+    cost: 5.00
+    pass-fee: true
+    lore:
+      - ""
+      - "&7Purchase 1000 coins for &6$5"
+      - ""
+      - "&7Use coins to buy in-game items!"
+      - ""
+      - "&eClick to purchase!"
+    commands:
+      - "eco give {player} 1000"
+      - "msg {player} &aYou received &61000 coins&a!"
+
+# ┌──────────────────────────────────────────────────────────────────┐
+# │                     DEBUG SETTINGS                               │
+# └──────────────────────────────────────────────────────────────────┘
+debug:
+  enabled: false
+  log-transactions: true
+  log-paypal-requests: false
