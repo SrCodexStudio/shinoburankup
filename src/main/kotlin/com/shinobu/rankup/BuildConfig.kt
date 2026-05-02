@@ -25,14 +25,14 @@ object BuildConfig {
      * compile-time inlining that breaks freemium switching.
      */
     @JvmField
-    val IS_PREMIUM: Boolean = true
+    val IS_PREMIUM: Boolean = false
 
     /**
      * Secondary build edition check -- const val is inlined at compile time,
      * making it immune to Java reflection attacks that modify IS_PREMIUM at runtime.
      * 0 = FREE, 1 = PREMIUM. Modified by the build script alongside IS_PREMIUM.
      */
-    private const val EDITION_CODE: Int = 1
+    private const val EDITION_CODE: Int = 0
 
     /**
      * Maximum ranks allowed in free version.
@@ -47,7 +47,7 @@ object BuildConfig {
     /**
      * Plugin version.
      */
-    const val VERSION: String = "3.0.1"
+    const val VERSION: String = "3.5.1"
 
     /**
      * Check if running free version.

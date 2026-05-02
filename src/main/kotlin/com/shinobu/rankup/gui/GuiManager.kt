@@ -171,15 +171,19 @@ class GuiManager private constructor(
      * @return True if the player can click (not on cooldown)
      */
     fun canClick(player: Player): Boolean {
+        val uuid = player.uniqueId
         val now = System.currentTimeMillis()
-        val lastClick = lastClickTime[player.uniqueId] ?: 0L
-
-        return if (now - lastClick >= clickCooldownMs) {
-            lastClickTime[player.uniqueId] = now
-            true
-        } else {
-            false
+        var allowed = false
+        lastClickTime.compute(uuid) { _, lastTime ->
+            if (lastTime == null || (now - lastTime) >= clickCooldownMs) {
+                allowed = true
+                now
+            } else {
+                allowed = false
+                lastTime
+            }
         }
+        return allowed
     }
 
     /**

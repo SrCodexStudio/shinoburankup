@@ -122,14 +122,8 @@ class GuiListener : Listener {
             return
         }
 
-        // Check if any of the dragged slots are in our GUI
-        val topInventorySize = topInventory.size
-        val affectsOurGui = event.rawSlots.any { it < topInventorySize }
-
-        if (affectsOurGui) {
-            // CRITICAL: Cancel drag events that affect our GUI
-            event.isCancelled = true
-        }
+        // Cancel ALL drags when a custom GUI is open (Fairy Library recommendation)
+        event.isCancelled = true
     }
 
     /**

@@ -19,7 +19,7 @@ plugins {
 }
 
 group = "com.shinobu"
-version = "3.0.1"
+version = "3.5.1"
 
 repositories {
     mavenCentral()

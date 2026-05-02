@@ -296,6 +296,7 @@ class PlaceholderProcessor(
             "shinobu_rank",
             "shinobu_rank_id",
             "shinobu_rank_prefix",
+            "shinobu_prefix",
             "shinobu_rank_plain",
             "shinobu_rank_order",
             "shinobu_rank_cost",
@@ -317,7 +318,11 @@ class PlaceholderProcessor(
             "shinobu_money_needed_raw",
             "shinobu_balance",
             "shinobu_is_max_rank",
-            "shinobu_max_rank"
+            "shinobu_max_rank",
+            "shinobu_playtime",
+            "shinobu_playtime_required",
+            "shinobu_playtime_progress",
+            "shinobu_playtime_progress_bar"
         )
     }
 }

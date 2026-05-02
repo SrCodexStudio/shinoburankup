@@ -32,6 +32,7 @@ class RankupConfirmGui(
 ) : BaseGui(player, ShinobuRankup.getInstance().languageManager.get("gui.confirm.title"), 5) {
 
     private val plugin = ShinobuRankup.getInstance()
+    private val confirming = java.util.concurrent.atomic.AtomicBoolean(false)
 
     private val lang: LanguageManager
         get() = plugin.languageManager
@@ -352,6 +353,7 @@ class RankupConfirmGui(
      * Handles the confirm action using the real RankupService.
      */
     private fun handleConfirm() {
+        if (!confirming.compareAndSet(false, true)) return
         val rank = targetRank ?: return
 
         // Double-check balance using fresh data

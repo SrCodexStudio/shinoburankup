@@ -33,6 +33,7 @@ import com.shinobu.rankup.service.RewardService
 import com.shinobu.rankup.task.AutoSaveTask
 import com.shinobu.rankup.task.LeaderboardUpdateTask
 import com.shinobu.rankup.util.PluginCoroutineScope
+import com.shinobu.rankup.util.RateLimiter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -200,6 +201,16 @@ class ShinobuRankup : JavaPlugin() {
             // Initialize tasks
             initializeTasks()
 
+            // Periodic cleanup task (every 5 minutes) - prevents memory leaks
+            // from expired cache entries and stale rate limiter data
+            server.scheduler.runTaskTimer(this, Runnable {
+                try {
+                    playerCache.cleanupExpired()
+                    RateLimiter.COMMAND_LIMITER.cleanup()
+                    RateLimiter.ECONOMY_LIMITER.cleanup()
+                } catch (_: Exception) {}
+            }, 6000L, 6000L) // 5 min delay, 5 min interval
+
             // Initialize API
             initializeAPI()
 
@@ -228,6 +239,10 @@ class ShinobuRankup : JavaPlugin() {
                 leaderboardTask.stop()
             }
 
+            // Clear caches to release memory
+            try { playerCache.clear() } catch (_: Exception) {}
+            try { leaderboardCache.invalidate() } catch (_: Exception) {}
+
             // Cleanup listeners
             if (::playerListener.isInitialized) {
                 playerListener.cleanup()
@@ -245,6 +260,12 @@ class ShinobuRankup : JavaPlugin() {
             if (::rankupService.isInitialized) {
                 rankupService.cleanup()
             }
+
+            // Clear rate limiters to release memory
+            try {
+                RateLimiter.COMMAND_LIMITER.clear()
+                RateLimiter.ECONOMY_LIMITER.clear()
+            } catch (_: Exception) {}
 
             // Shutdown command queue service (cancel pending commands)
             if (::commandQueueService.isInitialized) {

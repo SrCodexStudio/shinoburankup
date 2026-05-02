@@ -276,6 +276,9 @@ class CommandQueueService(
      * @return Number of commands cancelled
      */
     fun cancelPlayerCommands(uuid: UUID): Int {
+        // Read player name BEFORE removing from the map
+        val playerName = playerNames[uuid] ?: uuid.toString()
+
         val playerQueue = playerQueues.remove(uuid)
         val count = playerQueue?.size ?: 0
 
@@ -286,8 +289,7 @@ class CommandQueueService(
         playerNames.remove(uuid)
 
         if (count > 0) {
-            val name = playerNames[uuid] ?: uuid.toString()
-            logger.info("Cancelled $count pending commands for player $name")
+            logger.info("Cancelled $count pending commands for player $playerName")
         }
 
         return count
